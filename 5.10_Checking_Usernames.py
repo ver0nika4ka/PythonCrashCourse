@@ -4,7 +4,7 @@ new_users = ['veronica','nastya','bectur','sema','alla']
 current_users_lower = []
 for user in current_users:
     current_users_lower.append(user.lower())
-
+# The same but using comprehension
 # current_users_lower = [user.lower() for user in current_users]
 
 for n_user in new_users:

@@ -1,0 +1,3 @@
+In Python you can do slicing or copy a list using [:].
+In Python you can iterate through dictionaries usig key-value.
+In Python you can create classes and make an instance of the class. Also, you can do inheriting (creating a child class) and write different methods in class and use them as many times as you like.

@@ -1,0 +1,10 @@
+
+.DS_Store
+5.13_Your_Ideas.py
+__pycache__/
+*.pyc
+pi_digits.txt
+pi_million_digits.txt
+birthday_in_pi.py
+temp_test/
+*_env/

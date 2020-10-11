@@ -5,8 +5,8 @@ Print a message how many times the loop run to give you a winning ticket."""
 
 from random import choice
 
-num_letter = (3,8,'a',1,'z',7,5,'v',8,'x','q',0,9,2,4)
-my_ticket = 'v123'
+num_letter = (3,'c',8,'a',1,'z',7,5,'v',8,'x','p','o','q',0,'h','w',9,2,4,6,'k','f')
+my_ticket = '8c1z'
 count = 0
 
 ticket_num = ''

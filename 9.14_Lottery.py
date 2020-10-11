@@ -3,7 +3,7 @@ Randomly select four numbers or letters from the list and print a message
 saying that any ticket with these four numbers or letters wins prize."""
 from random import choice
 
-num_letter = (3,8,'a',1,'z',7,5,'v',8,'x','q',0,9,2,4)
+num_letter = (3,'c',8,'a',1,'z',7,5,'v',8,'x','p','o','q',0,'h','w',9,2,4,6,'k','f')
 
 # Using list (shows e.g. ['v', 'a', 4, 'v'])
 # ticket_num = []

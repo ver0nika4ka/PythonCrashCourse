@@ -1,0 +1,19 @@
+{% extends "pizzas/base.html" %}
+
+{% block content %}
+
+  <p>Our Pizzas</p>
+<!-- bulleted list is called an unordered list (ul) -->
+  <ul>
+    <!-- loops through the list from the context dict -->
+    {% for pizza in pizzas %}
+      <li>
+          <a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a>
+      </li>
+      <!--if there are no items in the list, using tag empty-->
+    {% empty %}
+      <li>No pizzas have been added yet.</li>
+    {% endfor %}
+  </ul>
+
+{% endblock content %}

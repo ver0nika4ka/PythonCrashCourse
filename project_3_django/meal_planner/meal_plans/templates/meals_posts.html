@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>TEST All posts</h3>
+<h3>Meal plans</h3>
+<ul>
+    {% for meal_post in meals_posts %}
+    <li>
+        <a href="{% url 'meal_plans:meal_post' meal_post.id %}">{{ meal_post }}</a>
+    </li>
+    {% empty %}
+        <li>No meal plans have been added yet.</li>
+    {% endfor %}
+</ul>
 {% endblock content %}

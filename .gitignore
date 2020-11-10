@@ -8,3 +8,4 @@ pi_million_digits.txt
 birthday_in_pi.py
 temp_test/
 *_env/
+*.sqlite3

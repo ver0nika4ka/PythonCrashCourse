@@ -15,6 +15,7 @@ def topics(request):
     topics = Topic.objects.order_by('date_added')
     # Context - dictionary, keys are names we use in template to access data
     # and values are the data we need to send to the template.
+    topics = Topic.objects.filter(owner=request.user).order_by('date_added')
     context = {'topics': topics}
     # Building page with data, pass request object and the path to the template and pass the context variable to render().
     return render(request, 'learning_logs/topics.html', context)

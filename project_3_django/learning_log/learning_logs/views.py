@@ -27,8 +27,8 @@ def topic(request, topic_id):
     """Show a single topic and all its entries."""
     topic = Topic.objects.get(id=topic_id)
     # Make sure the topic belongs to the current user. 
-    if topic.owner != request.user: 
-        raise Http404 
+    user = request.user
+    check_topic_owner(user, topic)
     
     # '-' before date_added sorts results in reverse order, display most recent first.
     entries = topic.entry_set.order_by('-date_added')
@@ -46,7 +46,9 @@ def new_topic(request):
         # POST data submitted; process data.
         form = TopicForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            new_topic = form.save(commit=False)
+            new_topic.owner = request.user
+            new_topic.save()
             return redirect('learning_logs:topics')
 
     # Display a blank or invalid form.
@@ -78,8 +80,8 @@ def edit_entry(request, entry_id):
     """Edit an existing entry."""
     entry = Entry.objects.get(id=entry_id)
     topic = entry.topic
-    if topic.owner != request.user: 
-        raise Http404
+    user = request.user
+    check_topic_owner(user, topic)
 
     if request.method != 'POST':
         # Initial request; pre-fill form with the current entry.
@@ -95,7 +97,9 @@ def edit_entry(request, entry_id):
     return render(request, 'learning_logs/edit_entry.html', context)
 
 
-
+def check_topic_owner(user, topic):
+    if topic.owner != user: 
+        raise Http404
 
 
 

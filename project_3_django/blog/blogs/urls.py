@@ -10,6 +10,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     # Page shows all the blogposts
     path('blogposts/', views.blogposts, name='blogposts'),
+    # Page for all posts of current user
+    path('my_blogposts/', views.my_blogposts, name='myposts'),
     # Detailed info about each blogpost
     path('blogposts/<int:blogpost_id>/', views.blogpost, name='blogpost'),
     # Page for adding a new blogpost

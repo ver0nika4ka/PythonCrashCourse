@@ -19,7 +19,10 @@ def blogposts(request):
 def blogpost(request, blogpost_id):
     """Show one post on the page."""
     blogpost = BlogPost.objects.get(id=blogpost_id)
-    context = {'blogpost': blogpost}
+    print(request)
+    user = request.user # TODO: Check if request contains field 'user'
+    is_author = user == blogpost.author
+    context = {'blogpost': blogpost, 'is_author': is_author}
     return render(request, 'blogs/blogpost.html', context)
 
 @login_required
@@ -61,6 +64,17 @@ def edit_post(request, blogpost_id):
 
     context = {'blogpost': blogpost, 'form': form} 
     return render(request,'blogs/edit_post.html', context)
+
+@login_required
+def my_blogposts(request):
+    """Show all blogposts of current user."""
+    user = request.user
+    # TODO: try: blogposts = BlogPost.objects.get(author=user)
+    blogposts = BlogPost.objects.filter(author=user).order_by('date_added')
+    context = {'blogposts': blogposts}
+    return render(request, 'blogs/blogposts.html', context)
+
+
 
 
 

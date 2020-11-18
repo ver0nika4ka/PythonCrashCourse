@@ -1,11 +1,12 @@
 {% extends "blogs/base.html" %}
 
 {% block content %}
-<h3>{{ blogpost.title }}</h3>
-<p>{{ blogpost.date_added }}</p>
-<p>{{ blogpost.text }}</p>
-<p>
-    <a href="{% url 'blogs:edit_post' blogpost.id %}">Edit post</a>
-</p>
-
+    <h3>{{ blogpost.title }}</h3>
+    <p>{{ blogpost.date_added }}</p>
+    <p>{{ blogpost.text }}</p>
+    {% if is_author %}
+        <p>
+            <a href="{% url 'blogs:edit_post' blogpost.id %}">Edit post</a>
+        </p>
+    {% endif %}
 {% endblock content %}
